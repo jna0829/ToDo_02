@@ -21,9 +21,9 @@ public class TodoRepositoryMemoryImpl implements TodoRepository {
 
     //테스트 하기 위해 만든 객체
     static {
-        toDoMap.put(1L, new ToDo(1L, "김철수", "저녁밥 만들기", false));
-        toDoMap.put(2L, new ToDo(2L, "박영희", "산책가기", false));
-        toDoMap.put(3L, new ToDo(3L, "김철수", "노래연습하기", true));
+        toDoMap.put(1L, new ToDo("저녁밥 만들기"));
+        toDoMap.put(2L, new ToDo("산책가기"));
+        toDoMap.put(3L, new ToDo("노래연습하기"));
     }
 
     @Override
