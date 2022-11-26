@@ -1,6 +1,7 @@
 package com.example.demo.todo.api;
 
 import com.example.demo.todo.dro.FindAllDTO;
+import com.example.demo.todo.dro.TodoDto;
 import com.example.demo.todo.entity.ToDo;
 import com.example.demo.todo.repository.TodoRepository;
 import com.example.demo.todo.service.TodoService;
@@ -51,9 +52,21 @@ public class TodoApiController {
 
     /// 할 일 개별 조회 요청
     // URI : /api/todos/3 : GET  => 3번 할 일만 조회해서 클라이언트에게 리턴
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findOne(@PathVariable Long id){
 
+        log.info("/api/todos/{} Get request!", id);
 
+        //id가 null일때
+        if(id == null || id <0) return ResponseEntity.badRequest().build();
 
+        //핵심적으로 해야할 일
+        TodoDto dto = service.findOneServ(id);
+
+        //dto가 만약 null이면
+        if(dto == null) return ResponseEntity.notFound().build();
+        return  ResponseEntity.ok().body(dto);
+    }
 
 
     // 할 일 삭제 요청

@@ -52,9 +52,14 @@ public class TodoService {
     }
 
 
+    public TodoDto findOneServ(Long id) {
 
+        ToDo toDo = repository.findOne(id);
+        log.info("findOneServ return data - {}", toDo);
 
+        return toDo != null ? new TodoDto(toDo) : null;
 
+    }
 
 
     public FindAllDTO deleteServ(long id) {
